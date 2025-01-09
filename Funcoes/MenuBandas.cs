@@ -1,9 +1,14 @@
 ﻿namespace ScreenSound.Funcoes
 {
-    public static class MenuBandas
+    public  class MenuBandas
     {
+   
+
         public static void ExibirOpcoesBandas()
         {
+
+            Funcoes funcoes = new Funcoes();
+            funcoes.ExibirMensagemBoasVindas();
             Console.WriteLine(@"１ － Ａｄｉｃｉｏｎａｒ ｂａｎｄａ： 
 ２ － Ｌｉｓｔａｒ ｂａｎｄａｓ： 
 ３ － Ａｖａｌｉａｒ ｂａｎｄａ： 
@@ -14,7 +19,7 @@
             if (opcao == "0")
             {
                 Console.Clear();
-                Funcoes funcoes = new Funcoes();
+               
                 funcoes.ExibirMensagemBoasVindas();
                 MenuUsuarios.ExibirMenuInicial();
             }

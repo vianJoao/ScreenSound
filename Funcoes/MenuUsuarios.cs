@@ -2,8 +2,12 @@
 {
     public static class MenuUsuarios
     {
+
         public static void ExibirMenuInicial()
         {
+            Funcoes funcoes = new Funcoes();
+           // funcoes.ExibirMensagemBoasVindas();
+
             Console.WriteLine(@"１ － Ｌｏｇｉｎ： 
 ２ － Ｃａｄａｓｔｒａｒ Ｕｓｕａｒｉｏ： 
 ３ － Ｅｓｑｕｅｃｉ ａ Ｓｅｎｈａ： 
@@ -19,6 +23,7 @@
                         MenuBandas.ExibirOpcoesBandas();
                         break;
                     case 2:
+                        Console.Clear();
                         CadastrarUsuario();
                         break;
                     default:
@@ -34,11 +39,14 @@
 
         private static void CadastrarUsuario()
         {
+            Funcoes funcoes = new Funcoes();
             string usuario;
             string nomeCompleto;
             string senha;
             string email;
 
+            Console.Clear();
+            funcoes.ExibirLogo();
             Console.WriteLine("Digite seu nome completo: ");
             nomeCompleto = Console.ReadLine();
             Console.WriteLine("Digite seu nome de usuário: ");
@@ -48,7 +56,11 @@
             Console.WriteLine("Digite sua senha: ");
             senha = Console.ReadLine();
 
+            Console.Clear();
+
+            funcoes.ExibirLogo();
             Console.WriteLine($"Usuário {nomeCompleto} cadastrado com sucesso!");
         }
     }
 }
+
