@@ -3,6 +3,9 @@
 {
     public  class MenuBandas
     {
+
+
+
    
 
         public static void ExibirOpcoesBandas()
@@ -23,10 +26,8 @@
                 {
                     case 1:Console.Clear();
                         funcoes.ExibirLogo();
-                        Console.WriteLine("Informe o nome da banda: ");
+                        funcoes.AddBandainfos();
 
-                        string nomeBanda = Console.ReadLine();
-                        Console.WriteLine("Você adicionou: "+nomeBanda);
                         break;
                     case 2: Console.WriteLine("Aqui teremos uma função para listar todas as bandas");
                         break;
