@@ -1,9 +1,10 @@
 ﻿namespace ScreenSound.Funcoes
 {
-    public static class MenuUsuarios
+    public  class MenuUsuarios
     {
 
-        public static void ExibirMenuInicial()
+        MenuCadastro MenuCadastro = new MenuCadastro();
+        public  void ExibirMenuInicial()
         {
             Funcoes funcoes = new Funcoes();
            // funcoes.ExibirMensagemBoasVindas();
@@ -24,7 +25,7 @@
                         break;
                     case 2:
                         Console.Clear();
-                        CadastrarUsuario();
+                        MenuCadastro.CadastrarUsuario();
                         break;
                     default:
                         Console.WriteLine("Opção inválida!");
@@ -35,31 +36,6 @@
             {
                 Console.WriteLine("Por favor, digite uma opção válida.");
             }
-        }
-
-        private static void CadastrarUsuario()
-        {
-            Funcoes funcoes = new Funcoes();
-            string usuario;
-            string nomeCompleto;
-            string senha;
-            string email;
-
-            Console.Clear();
-            funcoes.ExibirLogo();
-            Console.WriteLine("Digite seu nome completo: ");
-            nomeCompleto = Console.ReadLine();
-            Console.WriteLine("Digite seu nome de usuário: ");
-            usuario = Console.ReadLine();
-            Console.WriteLine("Digite seu email: ");
-            email = Console.ReadLine();
-            Console.WriteLine("Digite sua senha: ");
-            senha = Console.ReadLine();
-
-            Console.Clear();
-
-            funcoes.ExibirLogo();
-            Console.WriteLine($"Usuário {nomeCompleto} cadastrado com sucesso!");
         }
     }
 }
