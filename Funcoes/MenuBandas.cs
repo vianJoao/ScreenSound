@@ -3,14 +3,9 @@
 {
     public  class MenuBandas
     {
-
-
-
-   
-
         public static void ExibirOpcoesBandas()
         {
-
+            MenuUsuarios menuUsuarios = new MenuUsuarios();
             Funcoes funcoes = new Funcoes();
             funcoes.ExibirLogo();
             Console.WriteLine(@"１ － Ａｄｉｃｉｏｎａｒ ｂａｎｄａ： 
@@ -38,7 +33,7 @@
                     case 0:
                        Console.Clear();
                         funcoes.ExibirLogo();
-                        MenuUsuarios.ExibirMenuInicial();
+                        menuUsuarios.ExibirMenuInicial();
                         break;
 
                 }
