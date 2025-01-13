@@ -10,7 +10,7 @@ namespace ScreenSound.Funcoes;
 public class Funcoes
 {
 
-
+    MenuUsuarios menuUsuarios = new MenuUsuarios(); 
     string mensagemDeBoasVindas = "Boas Vindas ao ScreenSound";
     public void ExibirLogo() // Função de exibição de logo
 
@@ -22,6 +22,8 @@ public class Funcoes
 ▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▀▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▀▄▄▄▄▀▀▄▄▄▀▀▄▄▀▄▄▄▄▀▀");
     }
 
+    
+
     public void ExibirMensagemBoasVindas() //Função
     {
         //Colocar o '@' antes das aspas para Verbatim Literal e poder colocar a string da forma que quer que apareça.
@@ -31,7 +33,13 @@ public class Funcoes
     }
 
 
-
+    public void exibeListaDeBandas<MenuBandas>Funcoes)
+    {
+        foreach (var nomeBanda in Funcoes)
+        {
+            Console.WriteLine(banda);
+        }
+    }
 
     public void AddBandainfos()
     {
@@ -65,9 +73,10 @@ public class Funcoes
                     string nomeMusica = Console.ReadLine();
                     Console.WriteLine("Você adicionou a música " + nomeMusica);
                 
-                    
-
                 }
+                Console.Clear();
+                Console.WriteLine("Banda e músicas adicionadas com sucesso!");
+                MenuUsuarios.
             }
             else 
             {

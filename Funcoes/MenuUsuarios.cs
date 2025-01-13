@@ -6,6 +6,7 @@
         MenuCadastro MenuCadastro = new MenuCadastro();
         public  void ExibirMenuInicial()
         {
+            MenuLogin menuLogin = new MenuLogin();
             Funcoes funcoes = new Funcoes();
            // funcoes.ExibirMensagemBoasVindas();
 
@@ -22,6 +23,10 @@
                     case 0:
                         Console.Clear();
                         MenuBandas.ExibirOpcoesBandas();
+                        break;
+                    case 1:
+                        Console.Clear();
+                        menuLogin.TelaLogin();
                         break;
                     case 2:
                         Console.Clear();

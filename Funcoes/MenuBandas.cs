@@ -33,7 +33,7 @@
                     case 0:
                        Console.Clear();
                         funcoes.ExibirLogo();
-                        menuUsuarios.ExibirMenuInicial();
+                        // orx MenuUsuarios.ExibirMenuInicial();
                         break;
 
                 }

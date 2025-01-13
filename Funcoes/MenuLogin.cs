@@ -5,7 +5,7 @@ namespace ScreenSound.Funcoes
 {
     public class MenuLogin
     {
-        string usuario;
+        string usuario ;
         string senha;
 
         //
