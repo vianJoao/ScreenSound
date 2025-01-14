@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.SQLite; // Biblioteca para conexão com SQLite
-using ScreenSound.Funcoes;
+using ScreenSound.Usuarios;
 
-namespace ScreenSound.Funcoes
+namespace ScreenSound.Usuarios.CadastroELogin
 {
     public class MenuCadastro
     {
@@ -18,7 +18,7 @@ namespace ScreenSound.Funcoes
             var connectionString = @"Data Source=C:\Users\joao.viana\source\repos\ScreenSoundAtt\Banco\DbeaverSQLLITE\BancoSQLLITE; Version=3;";
 
             MenuUsuarios menuUsuarios = new MenuUsuarios();
-            Funcoes funcoes = new Funcoes();
+            var funcoes = new Funcoes();
 
             Console.Clear();
             funcoes.ExibirLogo();

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.SQLite; // Biblioteca para conexão com SQLite
-using ScreenSound.Funcoes;
+using ScreenSound.Usuarios;
 
 class Program
 {
@@ -16,7 +16,7 @@ class Program
             {
                 // Abre a conexão com o banco de dados
                 connection.Open();
-                Console.WriteLine("Conexão com o banco de dados SQLite inicializada com sucesso!");
+                //Console.WriteLine("Conexão com o banco de dados SQLite inicializada com sucesso!");
 
                 // Exibindo o menu e mensagem inicial
                 MenuUsuarios menuUsuarios = new MenuUsuarios();

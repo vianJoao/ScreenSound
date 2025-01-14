@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SQLite; // Biblioteca para conexão com SQLite
 
-namespace ScreenSound.Funcoes
+namespace ScreenSound.Usuarios.CadastroELogin
 {
     public class MenuLogin
     {
@@ -10,6 +10,7 @@ namespace ScreenSound.Funcoes
 
         public void TelaLogin()
         {
+            MenuBandasUsuario menuBandasUsuario = new MenuBandasUsuario();
             // Caminho do banco de dados SQLite
             var connectionString = @"Data Source=C:\Users\joao.viana\source\repos\ScreenSoundAtt\Banco\DbeaverSQLLITE\BancoSQLLITE; Version=3;";
 
@@ -19,8 +20,12 @@ namespace ScreenSound.Funcoes
                 {
                     connection.Open();
 
+
                     Console.WriteLine("Usuário: ");
                     usuario = Console.ReadLine();
+                    Console.Clear();
+
+                    Console.WriteLine("Usuário: " + usuario);
 
                     Console.WriteLine("Senha: ");
                     senha = Console.ReadLine();
@@ -45,6 +50,10 @@ namespace ScreenSound.Funcoes
                                 if (BCrypt.Net.BCrypt.Verify(senha, senhaHash))
                                 {
                                     Console.WriteLine("Bem-vindo, " + usuario + "!");
+                                    Console.Clear();
+                                    MenuBandasUsuario.MeuUsuCad();
+
+
                                 }
                                 else
                                 {

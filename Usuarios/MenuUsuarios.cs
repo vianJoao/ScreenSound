@@ -1,14 +1,17 @@
-﻿namespace ScreenSound.Funcoes
+﻿using ScreenSound.Bandas;
+using ScreenSound.Usuarios.CadastroELogin;
+
+namespace ScreenSound.Usuarios
 {
-    public  class MenuUsuarios
+    public class MenuUsuarios
     {
 
         MenuCadastro MenuCadastro = new MenuCadastro();
-        public  void ExibirMenuInicial()
+        public void ExibirMenuInicial()
         {
             MenuLogin menuLogin = new MenuLogin();
             Funcoes funcoes = new Funcoes();
-           // funcoes.ExibirMensagemBoasVindas();
+            // funcoes.ExibirMensagemBoasVindas();
 
             Console.WriteLine(@"１ － Ｌｏｇｉｎ： 
 ２ － Ｃａｄａｓｔｒａｒ Ｕｓｕａｒｉｏ： 
