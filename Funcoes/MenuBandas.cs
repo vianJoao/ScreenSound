@@ -5,6 +5,8 @@
     {
         public static void ExibirOpcoesBandas()
         {
+
+
             MenuUsuarios menuUsuarios = new MenuUsuarios();
             Funcoes funcoes = new Funcoes();
             funcoes.ExibirLogo();

@@ -1,86 +1,65 @@
 ﻿using System;
-using Npgsql; // Importando o namespace correto para PostgreSQL
+using System.Data.SQLite;
 
 public class ConnectBanco
 {
-    // String de conexão com o banco de dados PostgreSQL
     private readonly string _connectionString;
 
-    // Construtor da classe, permite injetar uma string de conexão personalizada
-    public ConnectBanco(string connectionString = null)
+    // Construtor para inicializar a string de conexão
+    public ConnectBanco()
     {
-        _connectionString = connectionString ??
-                            "Host=db.rgogpdgqapophdiwodqg.supabase.co;Database=postgres;Username=postgres;Password=Lilian030124@@;SSL Mode=Require;Trust Server Certificate=true";
+        _connectionString = @"Data Source=C:\Users\joao.viana\source\repos\ScreenSoundAtt\Banco\DbeaverSQLLITE\BancoSQLLITE; Version=3;";
     }
 
-    // Método para se conectar ao banco de dados e verificar a versão
-    public void Connect()
+    // Método para abrir e fechar a conexão, verificando o funcionamento
+    public void TestarConexao()
     {
-        try
+        using (var connection = new SQLiteConnection(_connectionString))
         {
-            using var conn = new NpgsqlConnection(_connectionString);
-            conn.Open();
-            Console.WriteLine("Conectado ao banco de dados!");
-
-            // Executa uma consulta SQL simples para verificar a versão do banco de dados
-            using var cmd = new NpgsqlCommand("SELECT version()", conn);
-            using var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                Console.WriteLine($"Versão do PostgreSQL: {reader.GetString(0)}");
+                connection.Open();
+                Console.WriteLine("Conexão com o banco de dados aberta com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao conectar ao banco de dados: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+                Console.WriteLine("Conexão com o banco de dados fechada.");
             }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erro ao conectar ao banco: {ex.Message}");
-        }
     }
 
-    // Método genérico para executar comandos SQL que não retornam resultados (e.g., INSERT, UPDATE, DELETE)
-    public void ExecuteCommand(string sql)
+    // Método para executar um comando SQL e retornar os resultados
+    public void ExecutarComando(string query)
     {
-        try
+        using (var connection = new SQLiteConnection(_connectionString))
         {
-            using var conn = new NpgsqlConnection(_connectionString);
-            conn.Open();
-            using var cmd = new NpgsqlCommand(sql, conn);
-            int rowsAffected = cmd.ExecuteNonQuery();
-            Console.WriteLine($"Comando executado com sucesso! Linhas afetadas: {rowsAffected}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erro ao executar comando SQL: {ex.Message}");
-        }
-    }
-
-    // Método genérico para executar comandos SQL que retornam resultados (e.g., SELECT)
-    public void ExecuteQuery(string sql)
-    {
-        try
-        {
-            using var conn = new NpgsqlConnection(_connectionString);
-            conn.Open();
-            using var cmd = new NpgsqlCommand(sql, conn);
-            using var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                for (int i = 0; i < reader.FieldCount; i++)
+                connection.Open();
+
+                using (var command = new SQLiteCommand(query, connection))
+                using (var reader = command.ExecuteReader())
                 {
-                    Console.Write($"{reader.GetName(i)}: {reader.GetValue(i)}\t");
+                    while (reader.Read())
+                    {
+                        // Exemplo: exibe todos os dados das colunas
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            Console.Write($"{reader.GetName(i)}: {reader.GetValue(i)}\t");
+                        }
+                        Console.WriteLine();
+                    }
                 }
-                Console.WriteLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao executar comando SQL: {ex.Message}");
             }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erro ao executar consulta SQL: {ex.Message}");
-        }
-    }
-
-    // Método para obter a string de conexão (caso seja necessário para outros usos)
-    public string GetConnectionString()
-    {
-        return _connectionString;
     }
 }

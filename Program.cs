@@ -1,25 +1,43 @@
-﻿using ScreenSound.Funcoes;
-//using ScreenSound.ConnectBanco;  // Importando o namespace correto para ConnectBanco
+﻿using System;
+using System.Data.SQLite; // Biblioteca para conexão com SQLite
+using ScreenSound.Funcoes;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Exibindo o menu e mensagem inicial
-        MenuUsuarios menuUsuarios = new MenuUsuarios();
-        Funcoes funcoes = new Funcoes();
-        funcoes.ExibirMensagemBoasVindas();
-        menuUsuarios.ExibirMenuInicial();
+        // String de conexão com o banco de dados SQLite
+        var connectionString = @"Data Source=C:\Users\joao.viana\source\repos\ScreenSoundAtt\Banco\DbeaverSQLLITE\BancoSQLLITE; Version=3;";
 
-        // Conexão com o banco de dados PostgreSQL
-        try
+        // Conexão com o banco de dados SQLite
+        using (var connection = new SQLiteConnection(connectionString))
         {
-            ConnectBanco connectBanco = new ConnectBanco();
-            connectBanco.Connect(); // Chama o método Connect para testar a conexão com o banco
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erro ao conectar ao banco de dados: {ex.Message}");
+            try
+            {
+                // Abre a conexão com o banco de dados
+                connection.Open();
+                Console.WriteLine("Conexão com o banco de dados SQLite inicializada com sucesso!");
+
+                // Exibindo o menu e mensagem inicial
+                MenuUsuarios menuUsuarios = new MenuUsuarios();
+                Funcoes funcoes = new Funcoes();
+
+                funcoes.ExibirMensagemBoasVindas();
+                menuUsuarios.ExibirMenuInicial();
+
+                // O programa continuará rodando até ser encerrado manualmente.
+                Console.WriteLine("Pressione qualquer tecla para sair...");
+                Console.ReadKey();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao conectar ao banco de dados: {ex.Message}");
+            }
+            finally
+            {
+                // Fecha a conexão automaticamente ao sair do escopo do "using"
+                Console.WriteLine("Conexão com o banco de dados SQLite encerrada.");
+            }
         }
     }
 }

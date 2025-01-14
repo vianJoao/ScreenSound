@@ -33,14 +33,7 @@ public class Funcoes
     }
 
 
-    public void exibeListaDeBandas<MenuBandas>Funcoes)
-    {
-        foreach (var nomeBanda in Funcoes)
-        {
-            Console.WriteLine(banda);
-        }
-    }
-
+   
     public void AddBandainfos()
     {
 
@@ -76,7 +69,7 @@ public class Funcoes
                 }
                 Console.Clear();
                 Console.WriteLine("Banda e músicas adicionadas com sucesso!");
-                MenuUsuarios.
+                
             }
             else 
             {

@@ -1,24 +1,22 @@
 ﻿using System;
-using Npgsql;  // Importando o namespace do Npgsql para PostgreSQL
-//using ScreenSound.ConnectBanco;
+using System.Data.SQLite; // Biblioteca para conexão com SQLite
 using ScreenSound.Funcoes;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ScreenSound.Funcoes
 {
     public class MenuCadastro
     {
-        string usuario;
-        string nomeCompleto;
-        string cpf;
-        string senha;
-        string email;
+        private string usuario;
+        private string nomeCompleto;
+        private string cpf;
+        private string senha;
+        private string email;
 
         public void CadastrarUsuario()
         {
-            // String de conexão com o banco de dados PostgreSQL
-            ConnectBanco connectBanco = new ConnectBanco();
-            var connectionString = connectBanco.GetConnectionString(); // Supondo que você tenha esse método para obter a string de conexão do banco
+            // String de conexão com o banco de dados SQLite
+            var connectionString = @"Data Source=C:\Users\joao.viana\source\repos\ScreenSoundAtt\Banco\DbeaverSQLLITE\BancoSQLLITE; Version=3;";
+
             MenuUsuarios menuUsuarios = new MenuUsuarios();
             Funcoes funcoes = new Funcoes();
 
@@ -46,14 +44,14 @@ namespace ScreenSound.Funcoes
 
             try
             {
-                // Conectando ao banco de dados usando Npgsql
-                using (var connection = new NpgsqlConnection(connectionString))
+                // Conectando ao banco de dados usando SQLite
+                using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO \"Usuario\" (Usuario, Nome, Senha, CPF, Email) VALUES (@usuario, @nome, @Senha, @CPF, @Email)";
+                    string query = "INSERT INTO Usuarios (Usuario, Nome, Senha, CPF, Email) VALUES (@Usuario, @Nome, @Senha, @CPF, @Email)";
 
-                    using (var command = new NpgsqlCommand(query, connection))
+                    using (var command = new SQLiteCommand(query, connection))
                     {
                         // Adicionando parâmetros para o comando SQL
                         command.Parameters.AddWithValue("@Usuario", usuario);
