@@ -46,10 +46,33 @@ namespace ScreenSound.API.Mail.ApiMailFunction
             string toName = Console.ReadLine();
             string toEmail = Console.ReadLine();
             string subject = "Recuperação de senha";
-            string body = "<h1>Olá!" + toName + 
+            string body = "<h1>Olá!" + toName +
             "</h1><p>Para recuperar sua senha, clique no link a seguir: <a href='https://screensound.com/recuperar-senha'>Recuperar senha</a></p>";
-        
-            _emailService.SendEmail(fromName, fromEmail, toName, toEmail, subject, body, isHtml: true);
+
+            _emailService.SendEmail(
+                fromName, fromEmail, toName, toEmail, subject, body, isHtml: true);
+        }
+
+        public void RegistraAdicoes(string toName, string toEmail, string nomeBanda, List <string> musicas)
+        {
+            // Dados do e-mail
+            string fromName = "ScreenSound";
+            string fromEmail = "screensound@gmail.com";
+            string subject = "Adições de conteúdo";
+            string body = "<h1>Olá, " + toName +
+                          "!</h1><p>Seus conteúdos foram adicionados ao ScreenSound:</p>" +
+                          "<p><strong>Bandas:</strong> " + nomeBanda + "</p>" +
+                          "<p><strong>Músicas:</strong> " + musicas + "</p>";
+
+            // Ajuste para um método genérico de envio de e-mail
+            _emailService.SendEmail(
+                toName: toName,
+                toEmail: toEmail,
+                fromName: fromName,
+                fromEmail: fromEmail,
+                subject: subject,
+                body: body,
+                isHtml: true);
         }
     }
 }
