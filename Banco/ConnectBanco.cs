@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.SQLite;
 
+//Classe para conexão com o banco de dados;
+
 public class ConnectBanco
 {
     private readonly string _connectionString;

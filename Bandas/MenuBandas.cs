@@ -2,7 +2,7 @@
 
 
 namespace ScreenSound.Bandas
-
+    //Classe do menu das bandas
 {
     public class MenuBandas
     {

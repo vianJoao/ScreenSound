@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SQLite; // Biblioteca para conexão com SQLite
 
+//Tela de login e validação.
 namespace ScreenSound.Usuarios.CadastroELogin
 {
     public class MenuLogin
