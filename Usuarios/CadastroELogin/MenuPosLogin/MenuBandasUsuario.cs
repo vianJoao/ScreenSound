@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-    public class MenuBandasUsuario
+// Classe para adicionar banda e informações quando se está logado como usuário.
+public class MenuBandasUsuario
     {
         public static void MeuUsuCad()
         {

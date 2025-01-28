@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ScreenSound.Usuarios;
 
-
+//Funções diversas
 //namespace ScreenSound.Funcoes;
 public class Funcoes
 {
@@ -25,7 +25,7 @@ public class Funcoes
 
     
 
-    public void ExibirMensagemBoasVindas() //Função
+    public void ExibirMensagemBoasVindas() //Função de mensagem de boas vindas ao usuário
     {
         //Colocar o '@' antes das aspas para Verbatim Literal e poder colocar a string da forma que quer que apareça.
         ExibirLogo();

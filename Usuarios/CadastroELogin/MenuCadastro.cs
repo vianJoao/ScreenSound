@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Data.SQLite; // Biblioteca para conexão com SQLite
 using ScreenSound.Usuarios;
+using ScreenSound.API;
+using ScreenSound.API.Mail.ApiMailFunction;
+using System.Xml.Linq;
 
+// Menu de cadastro de usuários.
 namespace ScreenSound.Usuarios.CadastroELogin
 {
     public class MenuCadastro
@@ -17,6 +21,7 @@ namespace ScreenSound.Usuarios.CadastroELogin
             // String de conexão com o banco de dados SQLite
             var connectionString = @"Data Source=C:\Users\joao.viana\source\repos\ScreenSoundAtt\Banco\DbeaverSQLLITE\BancoSQLLITE; Version=3;";
 
+            EmailSender emailSender = new EmailSender();
             MenuUsuarios menuUsuarios = new MenuUsuarios();
             var funcoes = new Funcoes();
 
@@ -65,8 +70,10 @@ namespace ScreenSound.Usuarios.CadastroELogin
                         if (rowsAffected > 0)
                         {
                             Console.Clear();
-                            funcoes.ExibirLogo();
+                            funcoes.ExibirLogo();                   
+                            emailSender.EnviarEmail(nomeCompleto,email);
                             Console.WriteLine($"Usuário {nomeCompleto} cadastrado com sucesso!");
+
                         }
                         else
                         {
