@@ -4,16 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ScreenSound.API;
+using ScreenSound.API.Mail.ApiMailFunction;
 
 // Classe para adicionar banda e informações quando se está logado como usuário.
 public class MenuBandasUsuario
     {
-        public static void MeuUsuCad()
+    public static void MeuUsuCad()
         {
-            FuncAddBanda funcAddBanda = new FuncAddBanda();
-             Funcoes funcoes = new Funcoes();
-            funcoes.ExibirLogo();
-            Console.WriteLine(@"1 - Adicionar banda:
+
+        EmailSender emailSender = new EmailSender();
+        FuncAddBanda funcAddBanda = new FuncAddBanda();
+        Funcoes funcoes = new Funcoes();
+        
+        funcoes.ExibirLogo();
+        Console.WriteLine(@"1 - Adicionar banda:
 2 - Listar bandas: 
 3 - Avaliar banda:
 4 - Avaliar música:
@@ -28,9 +33,13 @@ public class MenuBandasUsuario
                     case 1:
                         Console.Clear();
                         funcoes.ExibirLogo();
-                        funcAddBanda.AddBandainfos();
+                        var (nomeBanda, musicas) = funcAddBanda.AddBandainfos();
+                    if (!string.IsNullOrEmpty(nomeBanda) && musicas != null && musicas.Count > 0)
+                    {
+                        emailSender.RegistraAdicoes("Joao.viana","viana.joaovi@outlook.com.br",nomeBanda, musicas); // Passa os valores para o método
+                    }
 
-                        break;
+                    break;
                     case 2:
                         Console.WriteLine("Aqui teremos uma função para listar todas as bandas");
                         break;
@@ -45,7 +54,7 @@ public class MenuBandasUsuario
                         funcoes.ExibirLogo();
                         // orx MenuUsuarios.ExibirMenuInicial();
                         break;
-
+                    
                 }
 
             }
